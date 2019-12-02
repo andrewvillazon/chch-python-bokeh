@@ -1,4 +1,4 @@
-from bokeh.plotting import figure, output_file, save
+from bokeh.plotting import figure, output_file, show, save
 
 
 output_file("bar.html")
