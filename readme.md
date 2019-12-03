@@ -1,6 +1,6 @@
-# Bokeh Presentation - Christchurch Python Meetup
+# Bokeh Talk - Christchurch Python Meetup 3/12/2019
 
-Code samples and notes from Bokeh Presentation to the Christchurch Python Meetup.
+Code samples and notes from Bokeh Talk to the Christchurch Python Meetup.
 
 All code written in Python 3.
 
