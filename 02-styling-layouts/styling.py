@@ -22,7 +22,12 @@ before.margin = (20, 20, 20, 20)
 # New plot for styling
 after = figure(title="After", tools="")
 after.quad(
-    top=hist, bottom=0, left=edges[:-1], right=edges[1:], line_color="#2471A3", fill_color="#2471A3"
+    top=hist,
+    bottom=0,
+    left=edges[:-1],
+    right=edges[1:],
+    line_color="#2471A3",
+    fill_color="#2471A3",
 )
 
 # Add a normal curve
