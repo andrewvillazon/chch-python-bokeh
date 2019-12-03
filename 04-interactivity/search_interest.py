@@ -30,21 +30,23 @@ lang_select = Select(title="Language:", options=options)
 trend_source = ColumnDataSource(data={"month": [], "interest": []})
 trend = figure(
     title="Search Interest over time",
-    plot_width=550,
-    plot_height=350,
+    plot_width=700,
+    plot_height=500,
     x_axis_type="datetime",
     y_range=[0, 100],
 )
 trend.line(x="month", y="interest", line_width=3, source=trend_source)
+trend.margin = (20,20,20,20)
 
 bar_source = ColumnDataSource(data={"country": [], "interest": []})
 bar = figure(
     title="Top 20 Regions by Search Interest",
     plot_width=350,
-    plot_height=350,
+    plot_height=500,
     y_range=[],
 )
 bar.hbar(y="country", left=0, right="interest", height=0.5, source=bar_source)
+bar.margin = (20,20,20,20)
 
 
 # If fetching the data was expensive we could cache it with @lru_cache
