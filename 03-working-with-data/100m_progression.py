@@ -39,12 +39,15 @@ p = figure(
     plot_width=1000,
     title="100m World Record Progression",
     x_axis_type="datetime",
-    tools=[hover],
+    tools=[hover, "pan", "reset", "undo", "redo", "save", "box_zoom"],
 )
+p.sizing_mode = "stretch_both"
+p.margin = (50, 50, 50, 50)
+p.title.text_font_size = "20pt"
 
 statuses = ["Ratified", "Not ratified", "Ratified but later rescinded"]
 markers = ["circle", "asterisk", "circle_x"]
-colors = ["black", "silver", "red"]
+colors = ["#43A047", "#FF8F00", "#C62828"]
 
 # Iteratively add glyphs
 for status, marker, color in zip(statuses, markers, colors):
@@ -52,12 +55,17 @@ for status, marker, color in zip(statuses, markers, colors):
         x="date",
         y="time",
         source=ColumnDataSource(hm_df.loc[hm_df["status"] == status]),
-        size=10,
+        size=20,
         marker=marker,
         fill_color=color,
-        alpha=0.9,
+        line_color=color,
+        alpha=0.8,
         legend_label=status,
+        muted_color=color,
+        muted_alpha=0.2,
     )
+
+p.legend.click_policy = "mute"
 
 # Add Labels Annotation
 labels = LabelSet(
@@ -70,7 +78,7 @@ labels = LabelSet(
     source=ColumnDataSource(hm_df),
     render_mode="canvas",
     text_font_size="7pt",
-    text_alpha=0.2,
+    text_alpha=0.4,
 )
 
 # Period of time when times were taken manually
@@ -78,7 +86,7 @@ manual_time = BoxAnnotation(
     left=datetime(1900, 1, 1, 0, 0),
     right=datetime(1977, 1, 1, 0, 0),
     fill_alpha=0.1,
-    fill_color="silver",
+    fill_color="#2874A6",
 )
 
 # Add annotations to figure
